@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <title>New Tab</title>
+  <style>
+    /* Intentional: the first frame must be pure white or pure black. */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html,
+      body {
+        background-color: #000000;
+      }
+    }
+  </style>
+  <script src="redirect.js"></script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=options.html">
+  </noscript>
+</head>
+<body></body>
+</html>

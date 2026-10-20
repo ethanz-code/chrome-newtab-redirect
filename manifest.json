@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Custom New Tab",
+  "version": "2.0.1",
+  "description": "Open a page of your choice in every new tab. The first frame follows your system theme.",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "New tab settings"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "chrome_url_overrides": {
+    "newtab": "redirect.html"
+  }
+}

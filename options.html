@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F1F5F8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1015" media="(prefers-color-scheme: dark)">
+  <title>New tab settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria-label="languageLabel">
+        <button class="lang-button" type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-button" type="button" data-lang="zh" aria-pressed="false" lang="zh-CN">中文</button>
+      </div>
+    </div>
+
+    <header class="page-header">
+      <h1 class="page-title" data-i18n="title">New tab settings</h1>
+      <p class="page-lede" data-i18n="lede">Choose the page that opens in every new tab. The first frame follows your system theme.</p>
+      <p class="scheme" id="scheme-status" aria-live="polite"></p>
+    </header>
+
+    <form class="settings-form" id="settings-form" novalidate>
+      <div class="field">
+        <label class="field-label" for="target-url" data-i18n="urlLabel">Page URL</label>
+        <input
+          class="field-input"
+          id="target-url"
+          name="targetUrl"
+          type="text"
+          inputmode="url"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="https://example.com"
+          aria-describedby="url-help"
+        >
+        <p class="field-help" id="url-help" aria-live="polite" data-i18n="urlHint">Only http:// and https:// addresses. If you leave out the protocol, https:// is added.</p>
+      </div>
+
+      <div class="form-actions">
+        <button class="button button-primary" type="submit" data-i18n="save">Save</button>
+        <button class="button button-quiet" type="button" id="clear-button" data-i18n="clear">Clear</button>
+      </div>
+    </form>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <p class="current">
+      <span class="current-label" data-i18n="currentLabel">Current</span>
+      <span class="current-value" id="current-value"></span>
+    </p>
+
+    <div class="notes">
+      <p data-i18n="emptyNote">If no address is set, every new tab opens this settings page.</p>
+      <p data-i18n="themeNote">This extension only controls the new tab's first frame and redirect. It does not change the colors of other websites.</p>
+    </div>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>
