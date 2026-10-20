@@ -1,17 +1,18 @@
 <!-- prettier-ignore -->
 <div align="center">
 
-# Custom New Tab
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/cover-dark.png">
+  <img src="docs/cover.png" alt="Custom New Tab — settings page in light and dark" width="100%">
+</picture>
 
-A small Chrome extension that opens a page of your choice in every new tab.
-
-一个可配置目标网址的 Chrome 新标签页扩展，支持亮/暗首帧与中英文设置页。
+<p>A small Chrome extension that opens a page of your choice in every new tab.<br>一个可配置目标网址的 Chrome 新标签页扩展，支持亮/暗首帧与中英文设置页。</p>
 
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-4285F4?style=flat-square)
 ![No build step](https://img.shields.io/badge/build-none-2ea44f?style=flat-square)
 ![Permissions](https://img.shields.io/badge/permissions-storage-6f42c1?style=flat-square)
 
-[功能](#功能) • [截图](#截图) • [安装](#安装) • [使用](#使用) • [工作原理](#工作原理) • [隐私与权限](#隐私与权限) • [开发](#开发)
+[功能](#功能) • [演示](#演示) • [截图](#截图) • [安装](#安装) • [使用](#使用) • [工作原理](#工作原理) • [隐私与权限](#隐私与权限) • [开发](#开发)
 
 </div>
 
@@ -30,6 +31,14 @@ Custom New Tab 只做一件事：把新标签页变成你指定的网页。它�
 - **极简权限** — 只申请 `storage`；没有 host permissions、content scripts、分析或远程代码。
 - **无构建步骤** — 原生 HTML/CSS/JS，加载已解压扩展即可运行。
 - **克制的界面** — Atelier 风格的冷纸色、单一靛蓝 accent、Charter/Songti 标题、4pt 间距；无卡片、无边框、无阴影，焦点和错误态只用 outline。
+
+## 演示
+
+<p align="center">
+  <img src="docs/demo.gif" width="400" alt="Configuring the new tab URL, saving, switching language and theme" />
+</p>
+
+<p align="center"><sub>演示了输入地址、保存、切换中文、切换暗色和清空。</sub></p>
 
 ## 截图
 
@@ -53,6 +62,12 @@ Custom New Tab 只做一件事：把新标签页变成你指定的网页。它�
 
 > [!NOTE]
 > 目前是本地未打包扩展，尚未上架 Chrome Web Store。
+
+如果你还没有代码，先克隆仓库：
+
+```bash
+git clone https://github.com/ethanz-code/chrome-newtab-redirect.git
+```
 
 1. 打开 `chrome://extensions`。
 2. 打开右上角的 **开发者模式**。
@@ -127,6 +142,30 @@ node --check options.js
 
 `chrome.storage.local` 会在重新加载和更新后保留。移动项目目录会改变未打包扩展的 ID，旧设置可能读不到，所以加载后尽量不要移动目录。
 
+### 封面与截图模板
+
+封面模板是 `docs/cover.html`，亮/暗两版都从同一个文件渲染：
+
+```bash
+cd docs
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+# 亮色封面 1600×900
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --window-size=1600,900 --screenshot=cover.png cover.html
+
+# 暗色封面
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --blink-settings=preferredColorScheme=0 \
+  --window-size=1600,900 --screenshot=cover-dark.png cover.html
+
+# GitHub 社交预览 1280×640
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --window-size=1280,640 --screenshot=social-preview.png cover.html
+```
+
+GitHub 仓库的 Settings → Social preview 可以上传 `docs/social-preview.png`。演示 GIF 是从真实设置页逐帧截取的；修改 UI 后需要重新录制。
+
 ## 文件结构
 
 | 文件 | 作用 |
@@ -138,7 +177,11 @@ node --check options.js
 | `options.html` | 设置页结构 |
 | `options.css` | Atelier 风格 token 和布局 |
 | `options.js` | 中英文、校验、保存、清空 |
-| `docs/` | README 截图 |
+| `docs/cover.html` | 可编辑的 README 封面模板（亮/暗两版） |
+| `docs/cover.png` / `cover-dark.png` | 1600×900 封面 |
+| `docs/social-preview.png` | 1280×640 GitHub 社交预览 |
+| `docs/demo.gif` | 设置页交互演示 |
+| `docs/screenshot-*.png` | 亮/暗/中文界面截图 |
 
 ## 常见问题
 

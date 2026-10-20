@@ -1,0 +1,199 @@
+<!--
+  Hallmark · component: README cover · theme: Atelier (borrowed from ui-design-articles)
+
+  Edit the copy below, then render from this directory:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless=new --disable-gpu --hide-scrollbars \
+    --window-size=1600,900 --screenshot=cover.png cover.html
+
+  For GitHub's social preview, render at 1280x640:
+    --window-size=1280,640 --screenshot=social-preview.png cover.html
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light dark">
+  <title>Custom New Tab — cover</title>
+  <style>
+    :root {
+      --paper: #F1F5F8;
+      --hover: #E6EBF1;
+      --divider: #D4DAE1;
+      --text: #3D4149;
+      --ink: #1C1E24;
+      --muted: #565B64;
+      --faint: #626872;
+      --accent: #49539A;
+      --font-display: 'Charter', 'Bitstream Charter', 'Songti SC', 'STSong',
+        'Noto Serif CJK SC', 'SimSun', serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      --font-mono: 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0E1015;
+        --hover: #17191F;
+        --divider: #30333A;
+        --text: #B9BEC7;
+        --ink: #E2E6ED;
+        --muted: #8F949E;
+        --faint: #80858E;
+        --accent: #959EE6;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+    }
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: clamp(32px, 4vw, 72px);
+      align-items: center;
+      padding: clamp(48px, 6vw, 96px);
+      overflow: hidden;
+    }
+
+    .copy {
+      min-width: 0;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 clamp(24px, 3vw, 44px);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: clamp(11px, 0.8vw, 14px);
+      letter-spacing: 0.14em;
+    }
+
+    .rule {
+      display: inline-block;
+      width: clamp(24px, 3vw, 48px);
+      height: 2px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: clamp(56px, 6.6vw, 112px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+
+    .tagline {
+      margin: clamp(24px, 3vw, 40px) 0 0;
+      color: var(--text);
+      font-size: clamp(18px, 1.5vw, 26px);
+      line-height: 1.35;
+    }
+
+    .tagline-zh {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.2vw, 20px);
+      line-height: 1.5;
+    }
+
+    .points {
+      display: grid;
+      gap: 10px;
+      margin: clamp(28px, 4vw, 56px) 0 0;
+      padding: 0;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: clamp(11px, 0.85vw, 14px);
+      list-style: none;
+    }
+
+    .points li::before {
+      content: "—";
+      margin-right: 10px;
+      color: var(--accent);
+    }
+
+    .repo {
+      margin: clamp(32px, 4vw, 64px) 0 0;
+      color: var(--faint);
+      font-family: var(--font-mono);
+      font-size: clamp(10px, 0.75vw, 12px);
+      letter-spacing: 0.02em;
+    }
+
+    .shots {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .shot {
+      display: block;
+      width: auto;
+      height: clamp(420px, 72vh, 680px);
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      background: var(--paper);
+    }
+
+    .shot.light {
+      position: relative;
+      z-index: 1;
+    }
+
+    .shot.dark {
+      position: absolute;
+      right: 0;
+      bottom: 6%;
+      height: clamp(280px, 48vh, 450px);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <main class="cover">
+    <section class="copy">
+      <p class="kicker"><span class="rule" aria-hidden="true"></span>CHROME EXTENSION · MANIFEST V3</p>
+      <h1>Custom<br>New Tab</h1>
+      <p class="tagline">One URL. One quiet new tab.</p>
+      <p class="tagline-zh">一个地址，一个安静的新标签页。</p>
+      <ul class="points">
+        <li>Light / dark first frame</li>
+        <li>English / 中文 settings</li>
+        <li>storage permission only</li>
+      </ul>
+      <p class="repo">github.com/ethanz-code/chrome-newtab-redirect</p>
+    </section>
+    <section class="shots" aria-label="Settings page previews">
+      <img class="shot light" src="screenshot-light.png" alt="Settings page in light mode">
+      <img class="shot dark" src="screenshot-dark.png" alt="Settings page in dark mode">
+    </section>
+  </main>
+</body>
+</html>
