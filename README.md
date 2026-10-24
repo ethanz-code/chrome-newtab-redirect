@@ -66,7 +66,7 @@ Custom New Tab 只做一件事：把新标签页变成你指定的网页。它�
 如果你还没有代码，先克隆仓库：
 
 ```bash
-git clone https://github.com/ethanz-code/chrome-newtab-redirect.git
+git clone https://github.com/hey-yx/chrome-newtab-redirect.git
 ```
 
 1. 打开 `chrome://extensions`。
